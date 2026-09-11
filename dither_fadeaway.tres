@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bitckt6lejp3h"]
+
+[ext_resource type="Shader" uid="uid://bh7typ1k6wc5q" path="res://dither_fadeaway.gdshader" id="1_ag6vr"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ag6vr")
+shader_parameter/depth_threshold = 0.05
+shader_parameter/reverse_depth_threshold = 0.25
+shader_parameter/normal_threshold = 0.6
+shader_parameter/darken_amount = 0.3
+shader_parameter/lighten_amount = 1.5
+shader_parameter/normal_edge_bias = Vector3(1, 1, 1)
+shader_parameter/light_direction = Vector3(-0.96, -0.18, 0.2)
+shader_parameter/dither_repeat = 1.0
+shader_parameter/dither_strength = 1.0
+shader_parameter/min_dither_brightness = 0.1
+shader_parameter/color_a = Vector4(0.2, 0, 0, 1)
+shader_parameter/color_b = Vector4(0.8, 0.4, 0.2, 1)
+shader_parameter/bayer_mode = 4

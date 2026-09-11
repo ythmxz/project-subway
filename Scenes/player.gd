@@ -11,7 +11,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	var dest := x_center + cur_lane * 3.5
-	position.x = lerp(position.x, dest, 0.5)
+	velocity.x = (dest - position.x) * 0.5 / delta
+	velocity.z = (0 - position.z) * 0.8 / delta
 	
 	if Input.is_action_just_pressed("ui_right"):
 		cur_lane += 1
@@ -21,4 +22,5 @@ func _physics_process(delta: float) -> void:
 		velocity.y = 20
 	if Input.is_action_just_pressed("ui_down") and velocity.y >= 0:
 		velocity.y = minf(velocity.y, -30)
+
 	cur_lane = clampi(cur_lane, min_lane, max_lane)
