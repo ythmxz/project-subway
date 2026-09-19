@@ -24,3 +24,16 @@ func _physics_process(delta: float) -> void:
 		velocity.y = minf(velocity.y, -30)
 
 	cur_lane = clampi(cur_lane, min_lane, max_lane)
+
+
+func _on_lower_front_area_body_entered(body: Node3D) -> void:
+	if body == self:
+		return
+	print("LOWER FRONT")
+	print(body)
+
+func _on_upper_front_area_body_entered(body: Node3D) -> void:
+	if body == self:
+		return
+	print("UPPER FRONT")
+	print(body)

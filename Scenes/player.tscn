@@ -6,7 +6,9 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ufa0x"]
 
-[node name="CharacterBody3D" type="CharacterBody3D" unique_id=1948643388]
+[sub_resource type="SphereShape3D" id="SphereShape3D_v0iea"]
+
+[node name="Player" type="CharacterBody3D" unique_id=1948643388]
 script = ExtResource("1_v0iea")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=897709634]
@@ -14,3 +16,18 @@ shape = SubResource("CapsuleShape3D_fk1rg")
 
 [node name="Model" type="MeshInstance3D" parent="." unique_id=670410289]
 mesh = SubResource("CapsuleMesh_ufa0x")
+
+[node name="LowerFrontArea" type="Area3D" parent="." unique_id=1334924452]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.16388601, -0.45162764, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LowerFrontArea" unique_id=1994218171]
+shape = SubResource("SphereShape3D_v0iea")
+
+[node name="UpperFrontArea" type="Area3D" parent="." unique_id=142483649]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.16388601, 0.40117922, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UpperFrontArea" unique_id=1291772753]
+shape = SubResource("SphereShape3D_v0iea")
+
+[connection signal="body_entered" from="LowerFrontArea" to="." method="_on_lower_front_area_body_entered"]
+[connection signal="body_entered" from="UpperFrontArea" to="." method="_on_upper_front_area_body_entered"]
