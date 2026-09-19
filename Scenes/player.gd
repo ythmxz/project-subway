@@ -6,6 +6,42 @@ var cur_lane := 0
 
 @onready var x_center := position.x
 
+@onready var lower_front_area: Area3D = $LowerFrontArea
+@onready var upper_front_area: Area3D = $UpperFrontArea
+
+@onready var debug_m: DebugM = Utils.get_at_root(self, ^"DebugM")
+var l_collide_up: DebugM.Entry = null
+var l_collide_lo: DebugM.Entry = null
+
+func _ready() -> void:
+	after_ready.call_deferred()
+
+func after_ready() -> void:
+	l_collide_up = debug_m.alloc("CollideUpper", self)
+	l_collide_lo = debug_m.alloc("CollideLower", self)
+
+	# pior código que eu escrevi faz um tempo...
+	var sensors := [lower_front_area, upper_front_area]
+	var labels := [l_collide_lo, l_collide_up]
+	var callbacks := [on_lower_front_collision, on_upper_front_collision]
+	for i in range(0, len(sensors)):
+		var s = sensors[i]
+		var l = labels[i]
+		var c = callbacks[i]
+
+		s.body_entered.connect(func(body: Node3D) -> void:
+			if body == self:
+				return
+			l.set_text("%s" % body)
+			c.call(body)
+		)
+
+		s.body_exited.connect(func(body: Node3D) -> void:
+			if body == self:
+				return
+			l.set_text("")
+		)
+
 func _physics_process(delta: float) -> void:
 	velocity.y -= 65 * delta
 	move_and_slide()
@@ -25,15 +61,8 @@ func _physics_process(delta: float) -> void:
 
 	cur_lane = clampi(cur_lane, min_lane, max_lane)
 
+func on_lower_front_collision(body: Node3D) -> void:
+	pass
 
-func _on_lower_front_area_body_entered(body: Node3D) -> void:
-	if body == self:
-		return
-	print("LOWER FRONT")
-	print(body)
-
-func _on_upper_front_area_body_entered(body: Node3D) -> void:
-	if body == self:
-		return
-	print("UPPER FRONT")
-	print(body)
+func on_upper_front_collision(body: Node3D) -> void:
+	pass

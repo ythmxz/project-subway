@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c1f3tlnpl16dd" path="res://Scenes/stage.gd" id="1_m4hkj"]
 [ext_resource type="PackedScene" uid="uid://bd7q8eduip0aw" path="res://Scenes/player.tscn" id="1_w2l1y"]
 [ext_resource type="PackedScene" uid="uid://ce6qyh4eb5nsr" path="res://Scenes/crap_block.tscn" id="2_h0r8t"]
+[ext_resource type="Script" uid="uid://bgj1hklwrbau" path="res://debug_m.gd" id="4_ati5v"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_fk1rg"]
 
@@ -159,3 +160,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.660316, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1696851979]
 transform = Transform3D(1, 0, 0, 0, 0.59148717, 0.80631435, 0, -0.80631435, 0.59148717, 0, 8.786674, 6.5201154)
+
+[node name="DebugM" type="Node" parent="." unique_id=1394692498]
+script = ExtResource("4_ati5v")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1138531117]
+
+[node name="DebugLabels" type="HFlowContainer" parent="UI" unique_id=997244761]
+offset_right = 55.0
+offset_bottom = 50.0
