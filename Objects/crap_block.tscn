@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ce6qyh4eb5nsr"]
 
-[ext_resource type="Material" uid="uid://bitckt6lejp3h" path="res://dither_fadeaway.tres" id="1_cxto6"]
+[ext_resource type="Material" uid="uid://bitckt6lejp3h" path="res://Shaders/dither_fadeaway.tres" id="1_cxto6"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ufa0x"]
 

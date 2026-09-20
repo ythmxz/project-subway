@@ -1,10 +1,18 @@
 [gd_scene format=3 uid="uid://bd7q8eduip0aw"]
 
-[ext_resource type="Script" uid="uid://cc7r0vj552tr7" path="res://Scenes/player.gd" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://cc7r0vj552tr7" path="res://Objects/player.gd" id="1_v0iea"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fk1rg"]
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3y5cq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y0qk3"]
+albedo_color = Color(0.627451, 1, 1, 1)
+rim_enabled = true
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ufa0x"]
+material = SubResource("StandardMaterial3D_y0qk3")
+height = 1.1083984
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_v0iea"]
 
@@ -14,7 +22,12 @@ script = ExtResource("1_v0iea")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=897709634]
 shape = SubResource("CapsuleShape3D_fk1rg")
 
-[node name="Model" type="MeshInstance3D" parent="." unique_id=670410289]
+[node name="PlaceholderModel" type="MeshInstance3D" parent="." unique_id=670410289]
+mesh = SubResource("CapsuleMesh_3y5cq")
+
+[node name="PlaceholderModelCrouch" type="MeshInstance3D" parent="." unique_id=601452220]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.44580078, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_ufa0x")
 
 [node name="LowerFrontArea" type="Area3D" parent="." unique_id=1334924452]
