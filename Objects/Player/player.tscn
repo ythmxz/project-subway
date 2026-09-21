@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://bd7q8eduip0aw"]
 
-[ext_resource type="Script" uid="uid://cc7r0vj552tr7" path="res://Objects/player.gd" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://cc7r0vj552tr7" path="res://Objects/Player/player.gd" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://cydm7qancl1v3" path="res://Lib/state_machine.gd" id="2_3y5cq"]
+[ext_resource type="Script" uid="uid://uw7nnvd6m6d7" path="res://Objects/Player/state_walk.gd" id="3_2i4gt"]
+[ext_resource type="Script" uid="uid://86sav2cggk8" path="res://Objects/Player/state_jump.gd" id="4_0ar0x"]
+[ext_resource type="Script" uid="uid://bw2ktrwamgm1f" path="res://Objects/Player/slide_down.gd" id="4_x20fu"]
+[ext_resource type="Script" uid="uid://yv1yyule1c22" path="res://Objects/Player/state_dash_down.gd" id="6_0ar0x"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fk1rg"]
 
@@ -41,6 +46,23 @@ transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.16388601, 0.40117922,
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="UpperFrontArea" unique_id=1291772753]
 shape = SubResource("SphereShape3D_v0iea")
+
+[node name="StateMachine" type="Node" parent="." unique_id=123988274]
+script = ExtResource("2_3y5cq")
+default_state = NodePath("Walk")
+metadata/_custom_type_script = "uid://cydm7qancl1v3"
+
+[node name="Walk" type="Node" parent="StateMachine" unique_id=1685250588]
+script = ExtResource("3_2i4gt")
+
+[node name="Jump" type="Node" parent="StateMachine" unique_id=615066120]
+script = ExtResource("4_0ar0x")
+
+[node name="SlideDown" type="Node" parent="StateMachine" unique_id=846218051]
+script = ExtResource("4_x20fu")
+
+[node name="DashDown" type="Node" parent="StateMachine" unique_id=969542516]
+script = ExtResource("6_0ar0x")
 
 [connection signal="body_entered" from="LowerFrontArea" to="." method="_on_lower_front_area_body_entered"]
 [connection signal="body_entered" from="UpperFrontArea" to="." method="_on_upper_front_area_body_entered"]

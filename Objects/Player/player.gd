@@ -5,6 +5,7 @@ var max_lane := 1
 var cur_lane := 0
 
 @onready var x_center := position.x
+@onready var sm: StateMachine = $StateMachine
 
 @onready var lower_front_area: Area3D = $LowerFrontArea
 @onready var upper_front_area: Area3D = $UpperFrontArea
@@ -49,15 +50,17 @@ func _physics_process(delta: float) -> void:
 	var dest := x_center + cur_lane * 3.5
 	velocity.x = (dest - position.x) * 0.5 / delta
 	velocity.z = (0 - position.z) * 0.8 / delta
-	
+
 	if Input.is_action_just_pressed("ui_right"):
 		cur_lane += 1
 	if Input.is_action_just_pressed("ui_left"):
 		cur_lane -= 1
 	if Input.is_action_just_pressed("ui_up") and is_on_floor():
 		velocity.y = 20
+		sm.transition(^"Jump")
 	if Input.is_action_just_pressed("ui_down") and velocity.y >= 0:
 		velocity.y = minf(velocity.y, -30)
+		sm.transition(^"SlideDown" if is_on_floor() else ^"DashDown")
 
 	cur_lane = clampi(cur_lane, min_lane, max_lane)
 

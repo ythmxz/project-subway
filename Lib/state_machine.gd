@@ -6,6 +6,9 @@ class_name StateMachine
 
 signal on_transition(old: Node2D, new: Node2D)
 
+func get_state_name() -> StringName:
+	return current_state.name
+
 func transition(path: NodePath) -> void:
 	var old_state = current_state
 	var new_state = get_node(path)
