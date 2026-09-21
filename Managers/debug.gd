@@ -1,8 +1,13 @@
-class_name DebugM
 extends Node
 
-@onready var labels := Utils.get_at_root(self, ^"UI/DebugLabels")
+var labels: Node = null
 var entries: Array[Entry] = []
+
+func _ready() -> void:
+	get_tree().scene_changed.connect(on_scene_change)
+
+func on_scene_change() -> void:
+	labels = Utils.get_in_scene(^"UI/DebugLabels")
 
 class Entry:
 	var name: StringName
@@ -14,7 +19,7 @@ class Entry:
 	func on_exit() -> void:
 		label.queue_free()
 
-func alloc(name_: StringName, dep: Node) -> Entry:
+func alloc_entry(name_: StringName, dep: Node) -> Entry:
 	if labels == null:
 		push_error("Could not find debug UI")
 		return null

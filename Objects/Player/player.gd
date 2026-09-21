@@ -10,16 +10,15 @@ var cur_lane := 0
 @onready var lower_front_area: Area3D = $LowerFrontArea
 @onready var upper_front_area: Area3D = $UpperFrontArea
 
-@onready var debug_m: DebugM = Utils.get_at_root(self, ^"DebugM")
-var l_collide_up: DebugM.Entry = null
-var l_collide_lo: DebugM.Entry = null
+var l_collide_up: Debug.Entry = null
+var l_collide_lo: Debug.Entry = null
 
 func _ready() -> void:
 	after_ready.call_deferred()
 
 func after_ready() -> void:
-	l_collide_up = debug_m.alloc("CollideUpper", self)
-	l_collide_lo = debug_m.alloc("CollideLower", self)
+	l_collide_up = Debug.alloc_entry("CollideUpper", self)
+	l_collide_lo = Debug.alloc_entry("CollideLower", self)
 
 	# pior código que eu escrevi faz um tempo...
 	var sensors := [lower_front_area, upper_front_area]
