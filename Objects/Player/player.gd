@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+signal died()
+
 var min_lane := -1
 var max_lane := 1
 var cur_lane := 0
@@ -12,6 +14,8 @@ var cur_lane := 0
 
 var l_collide_up: Debug.Entry = null
 var l_collide_lo: Debug.Entry = null
+
+var is_dead := false
 
 func _ready() -> void:
 	after_ready.call_deferred()
@@ -46,10 +50,16 @@ func _physics_process(delta: float) -> void:
 	velocity.y -= 65 * delta
 	move_and_slide()
 	
-	var dest := x_center + cur_lane * 3.5
-	velocity.x = (dest - position.x) * 0.5 / delta
+	var x_dest := x_center + cur_lane * 3.5
+	velocity.x = (x_dest - position.x) * 0.5 / delta
 	velocity.z = (0 - position.z) * 0.8 / delta
 
+	if not is_dead:
+		handle_input()
+
+	cur_lane = clampi(cur_lane, min_lane, max_lane)
+
+func handle_input():
 	if Input.is_action_just_pressed("ui_right"):
 		cur_lane += 1
 	if Input.is_action_just_pressed("ui_left"):
@@ -61,10 +71,12 @@ func _physics_process(delta: float) -> void:
 		velocity.y = minf(velocity.y, -30)
 		sm.transition(^"SlideDown" if is_on_floor() else ^"DashDown")
 
-	cur_lane = clampi(cur_lane, min_lane, max_lane)
+func die() -> void:
+	is_dead = true
+	died.emit()
 
 func on_lower_front_collision(body: Node3D) -> void:
-	pass
+	die()
 
 func on_upper_front_collision(body: Node3D) -> void:
-	pass
+	die()
