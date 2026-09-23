@@ -5,6 +5,7 @@ var entries: Array[Entry] = []
 
 func _ready() -> void:
 	get_tree().scene_changed.connect(on_scene_change)
+	on_scene_change()
 
 func on_scene_change() -> void:
 	labels = Utils.get_in_scene(^"UI/DebugLabels")
@@ -21,7 +22,7 @@ class Entry:
 
 func alloc_entry(name_: StringName, dep: Node) -> Entry:
 	if labels == null:
-		push_error("Could not find debug UI")
+		push_error("Debug UI reference missing")
 		return null
 
 	var l := Label.new()
