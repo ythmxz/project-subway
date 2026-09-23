@@ -1,20 +1,16 @@
 extends State
 
-@onready var placeholder_model_crouch := $"../../PlaceholderModelCrouch"
-@onready var placeholder_model := $"../../PlaceholderModel"
-@onready var lower_front_area: Area3D = $"../../LowerFrontArea"
-@onready var upper_front_area: Area3D = $"../../UpperFrontArea"
+# TODO: talvez tirar esse estado (acho que fica ruim na hora de testar)
+
 @onready var sm: StateMachine = $".."
 @onready var player := $"../.."
 
 func enter() -> void:
-	placeholder_model.visible = false
-	placeholder_model_crouch.visible = true
-	lower_front_area.monitoring = true
-	upper_front_area.monitoring = false
+	player.set_crouch(true)
 
 func process(_delta: float) -> void:
-	pass
+	if player.is_on_floor():
+		sm.transition(^"SlideDown")
 
 func leave() -> void:
 	pass

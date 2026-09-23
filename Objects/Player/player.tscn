@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://cydm7qancl1v3" path="res://Lib/state_machine.gd" id="2_3y5cq"]
 [ext_resource type="Script" uid="uid://uw7nnvd6m6d7" path="res://Objects/Player/state_walk.gd" id="3_2i4gt"]
 [ext_resource type="Script" uid="uid://86sav2cggk8" path="res://Objects/Player/state_jump.gd" id="4_0ar0x"]
-[ext_resource type="Script" uid="uid://bw2ktrwamgm1f" path="res://Objects/Player/slide_down.gd" id="4_x20fu"]
+[ext_resource type="Script" uid="uid://bw2ktrwamgm1f" path="res://Objects/Player/state_slide_down.gd" id="4_x20fu"]
 [ext_resource type="Script" uid="uid://yv1yyule1c22" path="res://Objects/Player/state_dash_down.gd" id="6_0ar0x"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fk1rg"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_h0r8t"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3y5cq"]
 
@@ -25,7 +25,8 @@ height = 1.1083984
 script = ExtResource("1_v0iea")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=897709634]
-shape = SubResource("CapsuleShape3D_fk1rg")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02100283, -0.5479983, 0)
+shape = SubResource("SphereShape3D_h0r8t")
 
 [node name="PlaceholderModel" type="MeshInstance3D" parent="." unique_id=670410289]
 mesh = SubResource("CapsuleMesh_3y5cq")

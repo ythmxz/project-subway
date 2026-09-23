@@ -63,6 +63,9 @@ shape = SubResource("BoxShape3D_fk1rg")
 [node name="StaticBody3D" parent="Scenery" unique_id=1856106637 instance=ExtResource("2_h0r8t")]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 2.9033482, -21.355762)
 
+[node name="StaticBody3D18" parent="Scenery" unique_id=966018181 instance=ExtResource("2_h0r8t")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -4.286576, 0.54529405, -21.355762)
+
 [node name="StaticBody3D7" parent="Scenery" unique_id=1997315788 instance=ExtResource("2_h0r8t")]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 3.9640965, 2.9033482, -21.355762)
 

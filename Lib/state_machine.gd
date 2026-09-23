@@ -4,7 +4,7 @@ class_name StateMachine
 @export var default_state: NodePath
 @onready var current_state := get_node(default_state)
 
-signal on_transition(old: Node2D, new: Node2D)
+signal transitioned(old: Node2D, new: Node2D)
 
 func get_state_name() -> StringName:
 	return current_state.name
@@ -18,7 +18,7 @@ func transition(path: NodePath) -> void:
 	current_state = new_state
 	current_state.enter()
 
-	on_transition.emit(old_state, new_state)
+	transitioned.emit(old_state, new_state)
 
-func process(delta: float) -> void:
+func _process(delta: float) -> void:
 	current_state.process(delta)
