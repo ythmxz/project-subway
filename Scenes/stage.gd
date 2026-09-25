@@ -1,6 +1,7 @@
 extends Node3D
 
 @onready var stage := $Chunk1
+@onready var camera := $Camera3D
 
 const SCROLL_SPEED := 10.0
 const BACK_INIT_SCROLL_SPEED := -15.0
@@ -27,3 +28,9 @@ func _physics_process(delta: float) -> void:
 		scroll_speed = move_toward(scroll_speed, 0.0, BACK_DECCEL * delta)
 
 	stage.position.z += scroll_speed * delta
+
+	var cam_y: float = camera.global_position.y
+	var tgt_y: float = player.global_position.y + 3
+
+	if abs(cam_y - tgt_y) >= 2:
+		camera.global_position.y = move_toward(cam_y, tgt_y, abs(cam_y - tgt_y) * 0.05)
