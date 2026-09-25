@@ -11,6 +11,7 @@
 albedo_color = Color(0.21960784, 0.3882353, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fk1rg"]
+size = Vector3(3.9594727, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ufa0x"]
 
@@ -45,10 +46,6 @@ transform = Transform3D(1, 0, 0, 0, 0.557, 0, 0, 0, 19.862316, -0.025, 0.7921948
 mesh = SubResource("PlaneMesh_fk1rg")
 surface_material_override/0 = SubResource("StandardMaterial3D_ufa0x")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Scenery/Lane2" unique_id=184326953]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 43.77057, 0, 0, 0)
-shape = SubResource("BoxShape3D_fk1rg")
-
 [node name="Lane3" type="StaticBody3D" parent="Scenery" unique_id=1874291942]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.905199, -17.483463)
 
@@ -58,7 +55,7 @@ mesh = SubResource("PlaneMesh_fk1rg")
 surface_material_override/0 = SubResource("StandardMaterial3D_ufa0x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Scenery/Lane3" unique_id=121573785]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 43.77057, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 43.77057, 1.4797363, 0, 0)
 shape = SubResource("BoxShape3D_fk1rg")
 
 [node name="StaticBody3D" parent="Scenery" unique_id=1856106637 instance=ExtResource("2_h0r8t")]

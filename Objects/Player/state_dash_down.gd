@@ -1,6 +1,6 @@
 extends State
 
-# TODO: talvez tirar esse estado (acho que fica ruim na hora de testar)
+# TODO: talvez tirar esse estado (acho que fica ruim na hora de jogar com movimento)
 
 @onready var sm: StateMachine = $".."
 @onready var player := $"../.."

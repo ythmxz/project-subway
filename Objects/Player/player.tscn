@@ -7,7 +7,9 @@
 [ext_resource type="Script" uid="uid://bw2ktrwamgm1f" path="res://Objects/Player/state_slide_down.gd" id="4_x20fu"]
 [ext_resource type="Script" uid="uid://yv1yyule1c22" path="res://Objects/Player/state_dash_down.gd" id="6_0ar0x"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_h0r8t"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u7612"]
+radius = 0.48327637
+height = 0.96655273
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3y5cq"]
 
@@ -20,14 +22,20 @@ material = SubResource("StandardMaterial3D_y0qk3")
 height = 1.1083984
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_v0iea"]
+radius = 0.4
 
 [node name="Player" type="CharacterBody3D" unique_id=1948643388]
 collision_layer = 2
 script = ExtResource("1_v0iea")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=897709634]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02100283, -0.5479983, 0)
-shape = SubResource("SphereShape3D_h0r8t")
+[node name="ColliderL" type="CollisionShape3D" parent="." unique_id=897709634]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011087894, -0.5088527, -0.0029473305)
+shape = SubResource("CapsuleShape3D_u7612")
+
+[node name="ColliderU" type="CollisionShape3D" parent="." unique_id=1219176647]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011087894, 0.19847858, -0.0029473305)
+shape = SubResource("CapsuleShape3D_u7612")
+disabled = true
 
 [node name="PlaceholderModel" type="MeshInstance3D" parent="." unique_id=670410289]
 mesh = SubResource("CapsuleMesh_3y5cq")
@@ -37,18 +45,52 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.44580078, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_ufa0x")
 
-[node name="LowerFrontArea" type="Area3D" parent="." unique_id=1334924452]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.16388601, -0.45162764, 0)
+[node name="AreaLF" type="Area3D" parent="." unique_id=1334924452]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.08098805, -0.45162764, -0.27956924)
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LowerFrontArea" unique_id=1994218171]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaLF" unique_id=1994218171]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.100390874, 0, 0)
 shape = SubResource("SphereShape3D_v0iea")
 
-[node name="UpperFrontArea" type="Area3D" parent="." unique_id=142483649]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.16388601, 0.40117922, 0)
+[node name="AreaUF" type="Area3D" parent="." unique_id=142483649]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.023649454, 0.40117922, -0.24054953)
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UpperFrontArea" unique_id=1291772753]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaUF" unique_id=1291772753]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025097728, 0.060234606, -0.05521506)
+shape = SubResource("SphereShape3D_v0iea")
+
+[node name="AreaLR" type="Area3D" parent="." unique_id=799267970]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.19496617, -0.45162764, 0.036891878)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaLR" unique_id=1696334998]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.100390874, 0, 0)
+shape = SubResource("SphereShape3D_v0iea")
+
+[node name="AreaUR" type="Area3D" parent="." unique_id=182086899]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.25230476, 0.40117922, 0.07591158)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaUR" unique_id=2116066758]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025097728, 0.060234606, -0.05521506)
+shape = SubResource("SphereShape3D_v0iea")
+
+[node name="AreaLL" type="Area3D" parent="." unique_id=505525326]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.36706856, -0.45162764, 0.036891878)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaLL" unique_id=1176365286]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.100390874, 0, 0)
+shape = SubResource("SphereShape3D_v0iea")
+
+[node name="AreaUL" type="Area3D" parent="." unique_id=1858202285]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.30972996, 0.40117922, 0.07591158)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaUL" unique_id=1945036956]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025097728, 0.060234606, -0.05521506)
 shape = SubResource("SphereShape3D_v0iea")
 
 [node name="StateMachine" type="Node" parent="." unique_id=123988274]
@@ -68,5 +110,9 @@ script = ExtResource("4_x20fu")
 [node name="DashDown" type="Node" parent="StateMachine" unique_id=969542516]
 script = ExtResource("6_0ar0x")
 
-[connection signal="body_entered" from="LowerFrontArea" to="." method="_on_lower_front_area_body_entered"]
-[connection signal="body_entered" from="UpperFrontArea" to="." method="_on_upper_front_area_body_entered"]
+[connection signal="body_entered" from="AreaLF" to="." method="_on_lower_front_area_body_entered"]
+[connection signal="body_entered" from="AreaUF" to="." method="_on_upper_front_area_body_entered"]
+[connection signal="body_entered" from="AreaLR" to="." method="_on_lower_front_area_body_entered"]
+[connection signal="body_entered" from="AreaUR" to="." method="_on_upper_front_area_body_entered"]
+[connection signal="body_entered" from="AreaLL" to="." method="_on_lower_front_area_body_entered"]
+[connection signal="body_entered" from="AreaUL" to="." method="_on_upper_front_area_body_entered"]

@@ -11,7 +11,7 @@ func enter() -> void:
 
 func process(delta: float) -> void:
 	timer = maxf(0.0, timer - delta)
-	if timer <= 0.0 and not Input.is_action_pressed("ui_down") and player.upper_front_area.get_overlapping_bodies().size() == 0:
+	if timer <= 0.0 and not Input.is_action_pressed("ui_down") and player.has_upper_collision():
 		sm.transition(^"Walk")
 
 func leave() -> void:
