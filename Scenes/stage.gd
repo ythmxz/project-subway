@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var stage := $Scenery
+@onready var stage := $Chunk1
 
 const SCROLL_SPEED := 10.0
 const BACK_INIT_SCROLL_SPEED := -15.0

@@ -2,20 +2,14 @@
 
 [ext_resource type="Script" uid="uid://c1f3tlnpl16dd" path="res://Scenes/stage.gd" id="1_m4hkj"]
 [ext_resource type="PackedScene" uid="uid://bd7q8eduip0aw" path="res://Objects/Player/player.tscn" id="1_w2l1y"]
-[ext_resource type="PackedScene" uid="uid://ce6qyh4eb5nsr" path="res://Objects/crap_block.tscn" id="2_h0r8t"]
+[ext_resource type="PackedScene" uid="uid://cwj6as3qj2bj0" path="res://Scenes/chunk_1.tscn" id="2_ati5v"]
 [ext_resource type="Script" uid="uid://5gjng7e2tp8f" path="res://ui.gd" id="4_ati5v"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_fk1rg"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ufa0x"]
-albedo_color = Color(0.21960784, 0.3882353, 0, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_fk1rg"]
-size = Vector3(3.9594727, 1, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ufa0x"]
-
 [sub_resource type="Environment" id="Environment_fk1rg"]
+background_color = Color(8.663535e-07, 0.59050936, 0.67476517, 1)
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0146
+volumetric_fog_detail_spread = 6.0
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ufa0x"]
 
@@ -24,137 +18,7 @@ size = Vector3(3.9594727, 1, 1)
 [node name="Teste" type="Node3D" unique_id=948574914]
 script = ExtResource("1_m4hkj")
 
-[node name="Scenery" type="Node3D" parent="." unique_id=1048432134]
-
-[node name="Lane1" type="StaticBody3D" parent="Scenery" unique_id=177242654]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7986155, -1.905199, -17.483463)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Scenery/Lane1" unique_id=1541864881]
-transform = Transform3D(1, 0, 0, 0, 0.557, 0, 0, 0, 19.862316, 0.46578217, 0.79219484, 0)
-mesh = SubResource("PlaneMesh_fk1rg")
-surface_material_override/0 = SubResource("StandardMaterial3D_ufa0x")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Scenery/Lane1" unique_id=380674736]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 43.77057, 0, 0, 0)
-shape = SubResource("BoxShape3D_fk1rg")
-
-[node name="Lane2" type="StaticBody3D" parent="Scenery" unique_id=1811761372]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3755722, -1.905199, -17.483463)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Scenery/Lane2" unique_id=1238074568]
-transform = Transform3D(1, 0, 0, 0, 0.557, 0, 0, 0, 19.862316, -0.025, 0.79219484, 0)
-mesh = SubResource("PlaneMesh_fk1rg")
-surface_material_override/0 = SubResource("StandardMaterial3D_ufa0x")
-
-[node name="Lane3" type="StaticBody3D" parent="Scenery" unique_id=1874291942]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.905199, -17.483463)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Scenery/Lane3" unique_id=252935183]
-transform = Transform3D(1, 0, 0, 0, 0.557, 0, 0, 0, 19.862316, -0.025, 0.79219484, 0)
-mesh = SubResource("PlaneMesh_fk1rg")
-surface_material_override/0 = SubResource("StandardMaterial3D_ufa0x")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Scenery/Lane3" unique_id=121573785]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 43.77057, 1.4797363, 0, 0)
-shape = SubResource("BoxShape3D_fk1rg")
-
-[node name="StaticBody3D" parent="Scenery" unique_id=1856106637 instance=ExtResource("2_h0r8t")]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 2.9033482, -21.355762)
-
-[node name="StaticBody3D18" parent="Scenery" unique_id=966018181 instance=ExtResource("2_h0r8t")]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -3.2221494, 0.54529405, -21.355762)
-
-[node name="StaticBody3D19" parent="Scenery" unique_id=1612086104 instance=ExtResource("2_h0r8t")]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -3.2221494, 0.54529405, -23.535475)
-
-[node name="StaticBody3D20" parent="Scenery" unique_id=739110258 instance=ExtResource("2_h0r8t")]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -3.2221494, 0.54529405, -25.843647)
-
-[node name="StaticBody3D21" parent="Scenery" unique_id=1469662918 instance=ExtResource("2_h0r8t")]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -3.2221494, 0.54529405, -28.182604)
-
-[node name="StaticBody3D7" parent="Scenery" unique_id=1997315788 instance=ExtResource("2_h0r8t")]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 3.9640965, 2.9033482, -21.355762)
-
-[node name="StaticBody3D8" parent="Scenery" unique_id=456321964 instance=ExtResource("2_h0r8t")]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 2.8864002, 2.9033482, -26.479837)
-
-[node name="StaticBody3D9" parent="Scenery" unique_id=1116656100 instance=ExtResource("2_h0r8t")]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 2.8864002, 4.038169, -15.635329)
-
-[node name="StaticBody3D10" parent="Scenery" unique_id=1133251918 instance=ExtResource("2_h0r8t")]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 2.8864002, 1.9402332, -17.705854)
-
-[node name="StaticBody3D11" parent="Scenery" unique_id=591050648 instance=ExtResource("2_h0r8t")]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 4.5526366, 1.2695646, -20.222263)
-
-[node name="StaticBody3D12" parent="Scenery" unique_id=208904311 instance=ExtResource("2_h0r8t")]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 3.0260215, 1.2695646, -20.222263)
-
-[node name="StaticBody3D13" parent="Scenery" unique_id=32835745 instance=ExtResource("2_h0r8t")]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -0.7230425, 5.0643415, -22.91875)
-
-[node name="StaticBody3D14" parent="Scenery" unique_id=56986625 instance=ExtResource("2_h0r8t")]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -0.7230425, 6.4929237, -25.747347)
-
-[node name="StaticBody3D15" parent="Scenery" unique_id=414489983 instance=ExtResource("2_h0r8t")]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -0.7230425, 6.4929237, -19.976889)
-
-[node name="StaticBody3D16" parent="Scenery" unique_id=1532038430 instance=ExtResource("2_h0r8t")]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 1.0722151, 6.4929237, -22.709108)
-
-[node name="StaticBody3D17" parent="Scenery" unique_id=1876658802 instance=ExtResource("2_h0r8t")]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 1.0722151, 6.4929237, -28.418121)
-
-[node name="StaticBody3D3" type="StaticBody3D" parent="Scenery" unique_id=83343499]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, -1.34813, -57.969322)
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Scenery/StaticBody3D3" unique_id=1277446632]
-mesh = SubResource("BoxMesh_ufa0x")
-surface_material_override/0 = SubResource("StandardMaterial3D_ufa0x")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Scenery/StaticBody3D3" unique_id=1588171496]
-shape = SubResource("BoxShape3D_fk1rg")
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="Scenery" unique_id=1004642996]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -4.335352, -0.8901222, -48.272358)
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Scenery/StaticBody3D2" unique_id=1861609161]
-mesh = SubResource("BoxMesh_ufa0x")
-surface_material_override/0 = SubResource("StandardMaterial3D_ufa0x")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Scenery/StaticBody3D2" unique_id=125182311]
-shape = SubResource("BoxShape3D_fk1rg")
-
-[node name="StaticBody3D4" type="StaticBody3D" parent="Scenery" unique_id=1918726309]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -4.335352, -2.7255762, -54.371487)
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Scenery/StaticBody3D4" unique_id=934865659]
-mesh = SubResource("BoxMesh_ufa0x")
-surface_material_override/0 = SubResource("StandardMaterial3D_ufa0x")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Scenery/StaticBody3D4" unique_id=1379159680]
-shape = SubResource("BoxShape3D_fk1rg")
-
-[node name="StaticBody3D5" type="StaticBody3D" parent="Scenery" unique_id=1293471899]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -4.335352, -1.9806068, -52.04576)
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Scenery/StaticBody3D5" unique_id=92242892]
-mesh = SubResource("BoxMesh_ufa0x")
-surface_material_override/0 = SubResource("StandardMaterial3D_ufa0x")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Scenery/StaticBody3D5" unique_id=8269004]
-shape = SubResource("BoxShape3D_fk1rg")
-
-[node name="StaticBody3D6" type="StaticBody3D" parent="Scenery" unique_id=1128563418]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -4.335352, -1.9806068, -57.05417)
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Scenery/StaticBody3D6" unique_id=1381822923]
-mesh = SubResource("BoxMesh_ufa0x")
-surface_material_override/0 = SubResource("StandardMaterial3D_ufa0x")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Scenery/StaticBody3D6" unique_id=1417766534]
-shape = SubResource("BoxShape3D_fk1rg")
+[node name="Chunk1" parent="." unique_id=178818462 instance=ExtResource("2_ati5v")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=482709764]
 environment = SubResource("Environment_fk1rg")
@@ -168,7 +32,10 @@ transform = Transform3D(1, 0, 0, 0, 0.8933403, 0.44938076, 0, -0.44938076, 0.893
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.660316, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1696851979]
-transform = Transform3D(1, 0, 0, 0, 0.59148717, 0.80631435, 0, -0.80631435, 0.59148717, 0, 8.786674, 6.5201154)
+transform = Transform3D(0.96834093, -0.20128131, 0.14765373, 0, 0.5914872, 0.8063144, -0.2496313, -0.7807872, 0.5727613, 9.135828, 8.786674, 6.5201154)
+shadow_enabled = true
+shadow_normal_bias = 1.573
+shadow_blur = 4.59
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1138531117]
 script = ExtResource("4_ati5v")
