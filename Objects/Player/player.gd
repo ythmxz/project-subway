@@ -19,6 +19,7 @@ var l_collide_lo: Debug.Entry = null
 var l_cur_state: Debug.Entry = null
 
 var is_dead := false
+var is_crouching := false
 
 func _ready() -> void:
 	after_ready.call_deferred()
@@ -36,15 +37,11 @@ func after_ready() -> void:
 		var c = callbacks[i]
 
 		s.body_entered.connect(func(body: Node3D) -> void:
-			if body == self:
-				return
 			l.set_text("%s" % body)
 			c.call(body)
 		)
 
 		s.body_exited.connect(func(body: Node3D) -> void:
-			if body == self:
-				return
 			l.set_text("")
 		)
 
@@ -74,12 +71,17 @@ func handle_input():
 		cur_lane += 1
 	if Input.is_action_just_pressed("ui_left"):
 		cur_lane -= 1
+
 	if Input.is_action_just_pressed("ui_up") and is_on_floor():
 		velocity.y = 20
 		sm.transition(^"Jump")
-	if Input.is_action_just_pressed("ui_down") and velocity.y >= 0:
+
+	if sm.get_state_name() == &"Jump" and Input.is_action_just_pressed("ui_down"):
 		velocity.y = minf(velocity.y, -30)
-		sm.transition(^"SlideDown" if is_on_floor() else ^"DashDown")
+		sm.transition(^"DashDown")
+
+	if sm.get_state_name() == &"Walk" and Input.is_action_just_pressed("ui_down"):
+		sm.transition(^"SlideDown")
 
 func die() -> void:
 	is_dead = true
@@ -88,10 +90,11 @@ func die() -> void:
 func set_crouch(crouch: bool) -> void:
 	placeholder_model.visible = not crouch
 	placeholder_model_crouch.visible = crouch
-	upper_front_area.monitoring = not crouch
+	is_crouching = crouch
 
 func on_lower_front_collision(_body: Node3D) -> void:
 	die()
 
 func on_upper_front_collision(_body: Node3D) -> void:
-	die()
+	if not is_crouching:
+		die()

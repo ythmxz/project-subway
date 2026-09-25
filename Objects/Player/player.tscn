@@ -22,6 +22,7 @@ height = 1.1083984
 [sub_resource type="SphereShape3D" id="SphereShape3D_v0iea"]
 
 [node name="Player" type="CharacterBody3D" unique_id=1948643388]
+collision_layer = 2
 script = ExtResource("1_v0iea")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=897709634]
@@ -38,12 +39,14 @@ mesh = SubResource("CapsuleMesh_ufa0x")
 
 [node name="LowerFrontArea" type="Area3D" parent="." unique_id=1334924452]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.16388601, -0.45162764, 0)
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LowerFrontArea" unique_id=1994218171]
 shape = SubResource("SphereShape3D_v0iea")
 
 [node name="UpperFrontArea" type="Area3D" parent="." unique_id=142483649]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.16388601, 0.40117922, 0)
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="UpperFrontArea" unique_id=1291772753]
 shape = SubResource("SphereShape3D_v0iea")
